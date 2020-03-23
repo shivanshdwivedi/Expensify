@@ -13,3 +13,6 @@ const book = {
 const {name : publisherName = 'Itself'} = book.publisher;
 
 console.log(publisherName);
+
+
+
