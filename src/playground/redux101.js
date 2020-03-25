@@ -1,17 +1,42 @@
+// jshint esversion : 6
+
 import {createStore} from 'redux';
+
+//Action generators -- functions that are created at one place and then return action objects
+
+const incrementCount = ({incrementBy = 1} = {}) => ({
+     type: 'INCREMENT',
+     incrementBy
+});
+
+const decrementCount = ({decrementBy = 1} = {}) => ({
+    type: 'DECREMENT',
+    decrementBy
+});
+
+const setCount = ({setBy = 0} = {}) => ({
+    type: 'RESET',
+    setBy
+});
+
+// const decrementCount = ({decrementBy = 1} = {}) => ({
+//     type: 'DECREMENT',
+//     decrementBy
+// });
+
+
 
 const store = createStore((state = {count: 0} , action) => {
      
     switch(action.type){
         case'INCREMENT':
         return{
-            count: state.count + 1
+            count: state.count + action.incrementBy
         };    
 
-        case'DECREMENT':
-        const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1 ;
+        case'DECREMENT':  
         return{
-            count: state.count - decrementBy
+            count: state.count - action.decrementBy
         };
 
         case'RESET':
@@ -30,31 +55,20 @@ const store = createStore((state = {count: 0} , action) => {
 
 }); 
 
-const subscribe = store.subscribe(() => {
+const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+store.dispatch(incrementCount({incrementBy: 5}));
 
-store.dispatch({
-    type: 'INCREMENT'
-});
+store.dispatch(incrementCount());
 
-store.dispatch({
-    type: 'RESET'
-});
+store.dispatch(setCount({setBY : 0}));
 
-store.dispatch({
-    type: 'DECREMENT',
-    decrementBy : 10
-});
-
+store.dispatch(decrementCount({decrementBy : 5}));
 
 store.dispatch({
     type: 'SET',
     count: 101
 });
 
-console.log(store.getState());
