@@ -14,15 +14,15 @@ const decrementCount = ({decrementBy = 1} = {}) => ({
     decrementBy
 });
 
-const setCount = ({setBy = 0} = {}) => ({
+const resetCount = ({resetBy = 0} = {}) => ({
     type: 'RESET',
-    setBy
+    resetBy
 });
 
-// const decrementCount = ({decrementBy = 1} = {}) => ({
-//     type: 'DECREMENT',
-//     decrementBy
-// });
+const setCount = ({setBy}) => ({
+    type: 'SET',
+    setBy
+});
 
 
 
@@ -46,7 +46,7 @@ const store = createStore((state = {count: 0} , action) => {
 
         case 'SET':
             return{
-                count: action.count
+                count: action.setBy
             }
 
         default:
@@ -63,12 +63,9 @@ store.dispatch(incrementCount({incrementBy: 5}));
 
 store.dispatch(incrementCount());
 
-store.dispatch(setCount({setBY : 0}));
+store.dispatch(resetCount({resetBY : 0}));
 
 store.dispatch(decrementCount({decrementBy : 5}));
 
-store.dispatch({
-    type: 'SET',
-    count: 101
-});
+store.dispatch(setCount({setBy: 101}));
 
