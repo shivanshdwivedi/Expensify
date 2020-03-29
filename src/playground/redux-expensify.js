@@ -1,8 +1,8 @@
 // jshint esversion : 6
 // jshint esversion : 9
+
 import { createStore, combineReducers } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
-
 
 // ADD_EXPENSE
 const addExpense = (
@@ -176,6 +176,7 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 // store.dispatch(setTextFilter());
 
  store.dispatch(sortByAmount());
+
 // store.dispatch(sortByDate());
 
 // store.dispatch(setStartDate(0)); // startDate 125
