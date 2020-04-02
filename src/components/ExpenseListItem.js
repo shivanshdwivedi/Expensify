@@ -1,24 +1,12 @@
 // Export a stateless functional component
 // description , amout , createdAt
 import React from 'react';
-import {connect} from 'react-redux';
 
-const ExpenseListItem = () => (
+const ExpenseListItem = ({description , amount , createdAt}) => (
     <div>
-        <h1>
-        Items Are:
-        {props.expenses.description}
-        {props.filters.description}
-        </h1>
+        <h3> {description} </h3>
+        <p>{amount} - {createdAt}</p>
 
     </div>
 );
-
-const mapStateToProps = (state) => {
-    return {
-        expenses: state.expenses,
-        filters: state.filters
-    }
-}
-
-export default connect(mapStateToProps)(ExpenseListItem)
+export default ExpenseListItem;
