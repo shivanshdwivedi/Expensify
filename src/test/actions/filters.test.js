@@ -1,3 +1,5 @@
+//jshint esversion : 6
+//jshint esversion : 9
 import moment from 'moment';
 import {setStartDate , setEndDate, setTextFilter ,sortByDate , sortByAmount } from '../../actions/filters';
 
@@ -47,7 +49,5 @@ test('' , () => {
      type: 'SORT_BY_DATE'
    });
 });
-
-
 
 
