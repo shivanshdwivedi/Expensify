@@ -1,3 +1,7 @@
+// jshint esversion : 6
+// jshint esversion : 9
+
+
 import filtersReducer from '../../reducers/filters';
 import moment from 'moment';
 
