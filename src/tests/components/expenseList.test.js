@@ -7,3 +7,8 @@ test('' , () => {
     const wrapper = shallow(<ExpenseList expenses = {expenses} />);
     expect(wrapper).toMatchSnapshot();
 });
+
+test('' , () => {
+    const wrapper = shallow(<ExpenseList expenses = {[]} />);
+    expect(wrapper).toMatchSnapshot();
+});
