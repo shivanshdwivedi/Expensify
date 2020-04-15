@@ -21,3 +21,41 @@ test('' , () => {
     expect(wrapper.state('error').length).toBeGreaterThan(0);
     expect(wrapper).toMatchSnapshot();
 });
+
+test('' , () => {
+    const value = 'New Description';
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find('input').at(0).simulate('change' , {
+        target: {value}
+    });
+    expect(wrapper.state('description')).toBe(value);
+});
+
+test('' , () => {
+    const value = 'New Note value';
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find('textarea').at(0).simulate('change' , {
+        target: {value}
+    });
+    expect(wrapper.state('note')).toBe(value);
+});
+
+test('' , () => {
+    const value = '23.5';
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find('input').at(1).simulate('change' , {
+        target: {value}
+    });
+    expect(wrapper.state('amount')).toBe(value);
+});
+
+test('' , () => {
+    const value = '12.122';
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find('input').at(1).simulate('change' , {
+        target: {value}
+    });
+    expect(wrapper.state('amount')).toBe('');
+});
+
+
