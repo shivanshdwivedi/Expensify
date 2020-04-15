@@ -12,3 +12,11 @@ test('' , () => {
     const wrapepr = shallow(<ExpenseForm expense = {expenses[1]} />);
     expect(wrapepr).toMatchSnapshot(); 
 });
+
+test('' , () => {
+    const wrapper = shallow(<ExpenseForm />);
+    wrapper.find('form').simulate('submit' , {
+        preventDefault: () => {}
+        
+    });
+});
