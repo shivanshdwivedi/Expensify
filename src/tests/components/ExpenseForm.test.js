@@ -17,6 +17,7 @@ test('' , () => {
     const wrapper = shallow(<ExpenseForm />);
     wrapper.find('form').simulate('submit' , {
         preventDefault: () => {}
-        
     });
+    expect(wrapper.state('error').length).toBeGreaterThan(0);
+    expect(wrapper).toMatchSnapshot();
 });
