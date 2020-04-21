@@ -13,7 +13,14 @@ const firebaseConfig = {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+  const database = firebase.database();
 
-  firebase.database().ref().set({
-      name: 'Shivash Dwivedi'
+  database.ref().set({
+      name: 'Shivash Dwivedi',
+      age:20,
+      isSingle: false,
+      location: {
+          city:'Faridabad',
+          country: 'United States'
+      }
   });
