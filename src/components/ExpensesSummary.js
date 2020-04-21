@@ -9,5 +9,4 @@ export const ExpensesSummary = ({expenseCount , expensesTotal}) => {
         <div>
             <h1>Viewing {expenseCount} {expenseWord} totalling {formattedExpensesTotal}</h1>
         </div>
-    )
-}
+    )};
