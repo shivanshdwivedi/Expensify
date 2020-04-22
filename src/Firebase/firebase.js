@@ -21,6 +21,11 @@ const firebaseConfig = {
       isSingle: false,
       location: {
           city:'Faridabad',
-          country: 'United States'
+          country: 'India'
       }
-  });
+  }).then(() => {
+      console.log('data is saved');
+  }).catch((e) => {
+    console.log('this failed' , e);
+  })
+  ;
