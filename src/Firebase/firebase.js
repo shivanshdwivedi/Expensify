@@ -15,24 +15,32 @@ const firebaseConfig = {
   firebase.analytics();
   const database = firebase.database();
 
-  database.ref().set({
-      name: 'Shivash Dwivedi',
-      age:20,
-      isSingle: false,
-      location: {
-          city:'Faridabad',
-          country: 'India'
-      }
-  }).then(() => {
-      console.log('data is saved!');
-  }).catch((e) => {
-    console.log('this failed' , e);
+  database.ref().on('value' , (snapshot) => {
+      const val = snapshot.val();
+      console.log(`${val.name} is a ${val.job}`) ;
   });
 
-  database.ref().update({
-      job: 'Manager',
-      'location/city': 'delhi'
-  });
+ //   database.ref().set({
+//       name: 'Shivash Dwivedi',
+//       age:20,
+//       isSingle: false,
+//       location: {
+//           city:'Faridabad',
+//           country: 'India'
+//       }
+//   }).then(() => {
+//       console.log('data is saved!');
+//   }).catch((e) => {
+//     console.log('this failed' , e);
+//   });
+
+//   database.ref().update({
+//       job: 'Manager',
+//       'location/city': 'delhi'
+//   });
+
+
+
 //   database.ref()
 //   .remove()
 //   .then(() => {
