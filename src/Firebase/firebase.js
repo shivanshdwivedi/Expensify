@@ -24,8 +24,7 @@ const firebaseConfig = {
           country: 'India'
       }
   }).then(() => {
-      console.log('data is saved');
+      console.log('data is saved!');
   }).catch((e) => {
     console.log('this failed' , e);
-  })
-  ;
+  });
