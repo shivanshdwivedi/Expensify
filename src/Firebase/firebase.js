@@ -28,3 +28,15 @@ const firebaseConfig = {
   }).catch((e) => {
     console.log('this failed' , e);
   });
+
+  database.ref().update({
+      job: 'Manager',
+      'location/city': 'delhi'
+  });
+//   database.ref()
+//   .remove()
+//   .then(() => {
+//       console.log("Data was removed");
+//   }).catch((e) => {
+//     console.log('Data was not removed' , e);
+//   });
