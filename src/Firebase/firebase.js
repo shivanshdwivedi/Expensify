@@ -15,10 +15,31 @@ const firebaseConfig = {
   firebase.analytics();
   const database = firebase.database();
 
-  database.ref().on('value' , (snapshot) => {
-      const val = snapshot.val();
-      console.log(`${val.name} is a ${val.job}`) ;
+  database.ref('expenses').push({
+      description: 'Rent',
+      note: '' ,
+      amount: 109500,
+      createdAt: 976123498763
   });
+
+  database.ref('expenses').push({
+    description: 'Phone Bill',
+    note: '' ,
+    amount: 5900,
+    createdAt: 976123498763
+});
+
+database.ref('expenses').push({
+    description: 'Food',
+    note: '' ,
+    amount: 120,
+    createdAt: 976123498763
+});
+
+//   database.ref().on('value' , (snapshot) => {
+//       const val = snapshot.val();
+//       console.log(`${val.name} is a ${val.job}`) ;
+//   });
 
  //   database.ref().set({
 //       name: 'Shivash Dwivedi',
