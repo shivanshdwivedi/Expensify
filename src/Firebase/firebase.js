@@ -15,27 +15,25 @@ const firebaseConfig = {
   firebase.analytics();
   const database = firebase.database();
 
-  database.ref('expenses').push({
-      description: 'Rent',
-      note: '' ,
-      amount: 109500,
-      createdAt: 976123498763
-  });
+//   database.ref('expenses').push({
+//       description: 'Rent',
+//       note: '' ,
+//       amount: 109500,
+//       createdAt: 976123498763
+//   });
 
-  database.ref('expenses').push({
-    description: 'Phone Bill',
-    note: '' ,
-    amount: 5900,
-    createdAt: 976123498763
+database.ref('expenses').once('value').then((snapshot) => {
+    const expenses = [];
+
+    snapshot.forEach((childsnapshot) => {
+        expenses.push({
+            id: childsnapshot.key,
+            ...childsnapshot.val()
+        });
+    });
 });
 
-database.ref('expenses').push({
-    description: 'Food',
-    note: '' ,
-    amount: 120,
-    createdAt: 976123498763
-});
-
+console.log(expenses);
 //   database.ref().on('value' , (snapshot) => {
 //       const val = snapshot.val();
 //       console.log(`${val.name} is a ${val.job}`) ;
