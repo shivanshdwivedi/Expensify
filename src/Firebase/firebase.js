@@ -17,28 +17,34 @@ const firebaseConfig = {
   firebase.analytics();
   const database = firebase.database();
 
+
+export{ firebase , database as default };
+
+
+
+
   //child_removed- used when child gets deleted to notify as a subscriber.
-  database.ref('expenses').on('child_removed' , (snapshot) => {
-      console.log(snapshot.key , snapshot.val());
-  });
+  // database.ref('expenses').on('child_removed' , (snapshot) => {
+  //     console.log(snapshot.key , snapshot.val());
+  // });
 
   //child_changed - used when chnages ocuur in child.
-  database.ref('expenses').on('child_changed' , (snapshot) => {
-    console.log(snapshot.key , snapshot.val());
-});
+//   database.ref('expenses').on('child_changed' , (snapshot) => {
+//     console.log(snapshot.key , snapshot.val());
+// });
 
 // child_added - fires on time for all the data stored in firebase as well as new one added.
-database.ref('expenses').on('child_added' , (snapshot) => {
-    console.log(snapshot.key , snapshot.val());
-});
+// database.ref('expenses').on('child_added' , (snapshot) => {
+//     console.log(snapshot.key , snapshot.val());
+// });
 
 
-  database.ref('expenses').push({
-      description: 'Rent',
-      note: '' ,
-      amount: 109500,
-      createdAt: 976123498763
-  });
+  // database.ref('expenses').push({
+  //     description: 'Rent',
+  //     note: '' ,
+  //     amount: 109500,
+  //     createdAt: 976123498763
+  // });
   
   // .once used to once show value but not show changes.
 // database.ref('expenses').once('value').then((snapshot) => {
