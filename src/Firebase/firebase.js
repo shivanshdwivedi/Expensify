@@ -1,3 +1,5 @@
+//jshint esversion:6
+
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
@@ -15,25 +17,55 @@ const firebaseConfig = {
   firebase.analytics();
   const database = firebase.database();
 
-//   database.ref('expenses').push({
-//       description: 'Rent',
-//       note: '' ,
-//       amount: 109500,
-//       createdAt: 976123498763
-//   });
+  //child_removed- used when child gets deleted to notify as a subscriber.
+  database.ref('expenses').on('child_removed' , (snapshot) => {
+      console.log(snapshot.key , snapshot.val());
+  });
 
-database.ref('expenses').once('value').then((snapshot) => {
-    const expenses = [];
-
-    snapshot.forEach((childsnapshot) => {
-        expenses.push({
-            id: childsnapshot.key,
-            ...childsnapshot.val()
-        });
-    });
+  //child_changed - used when chnages ocuur in child.
+  database.ref('expenses').on('child_changed' , (snapshot) => {
+    console.log(snapshot.key , snapshot.val());
 });
 
-console.log(expenses);
+// child_added - fires on time for all the data stored in firebase as well as new one added.
+database.ref('expenses').on('child_added' , (snapshot) => {
+    console.log(snapshot.key , snapshot.val());
+});
+
+
+  database.ref('expenses').push({
+      description: 'Rent',
+      note: '' ,
+      amount: 109500,
+      createdAt: 976123498763
+  });
+  
+  // .once used to once show value but not show changes.
+// database.ref('expenses').once('value').then((snapshot) => {
+//     const expenses = [];
+
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
+
+// .on handler shows array with the changes done with it. It does not support promises.
+// database.ref('expenses').on('value' , (snapshot) => {
+//         const expenses = [];
+
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
+
 //   database.ref().on('value' , (snapshot) => {
 //       const val = snapshot.val();
 //       console.log(`${val.name} is a ${val.job}`) ;
