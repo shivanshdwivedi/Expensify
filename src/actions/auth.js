@@ -1,4 +1,15 @@
+// jshint esversion : 6
+
 import {firebase , googleAuthProvider} from '../Firebase/firebase';
+
+export const login = (uid) => ({
+    type: 'LOGIN',
+    uid
+});
+
+export const logout = () => ({
+    type: 'LOGOUT',
+});
 
 export const startLogin = () => {
     return() => {
