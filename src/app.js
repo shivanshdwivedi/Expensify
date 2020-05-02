@@ -12,6 +12,7 @@ import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
 import {firebase} from './Firebase/firebase';
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 // store.dispatch(addExpense({description: 'water bill' , amount: 4500 }));
@@ -38,7 +39,7 @@ const renderApp = () => {
   }
 }
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('root'));
+ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
 
 
